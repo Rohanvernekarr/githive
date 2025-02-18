@@ -1,4 +1,3 @@
-// lib/db/user.ts
 import { prisma } from '../prisma'
 import { User } from 'next-auth'
 
