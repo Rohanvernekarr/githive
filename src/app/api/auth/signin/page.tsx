@@ -1,4 +1,4 @@
-// app/auth/signin/page.tsx
+
 'use client'
 
 import { signIn } from 'next-auth/react'
@@ -11,8 +11,8 @@ export default function SignIn() {
   const error = searchParams.get('error')
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-gray-800 to-gray-900">
-      <div className="max-w-md w-full space-y-8 p-8 bg-gray-900 rounded-lg shadow-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-zinc-800 to-zinc-950">
+      <div className="max-w-md  space-y-8 p-8 bg-zinc-900 rounded-lg shadow-md">
         <div className="text-center">
           <h2 className="mt-6 text-3xl font-extrabold text-gray-200">
             Sign in to GitHive

@@ -63,16 +63,16 @@ interface Project {
     ]
   
     return (
-      <section className="py-16 bg-gradient-to-r from-gray-800 to-gray-900">
+      <section className="py-16 bg-gradient-to-r from-zinc-800 to-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white mb-8">
             Trending Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6">
             {projects.map((project) => (
               <div 
                 key={project.id}
-                className="bg-gray-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
+                className="bg-zinc-900  rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
               >
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{project.name}</h3>

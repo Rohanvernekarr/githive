@@ -1,4 +1,4 @@
-// app/dashboard/page.tsx
+
 'use client'
 
 import { useSession } from 'next-auth/react'
@@ -39,23 +39,13 @@ export default function DashboardPage() {
     }
   }
 
-  if (status === 'loading' || loading) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/4 mb-8"></div>
-          <div className="h-64 bg-gray-200 rounded-lg"></div>
-        </div>
-      </div>
-    )
-  }
-
+ 
   return (
-    <div className='bg-gradient-to-r from-gray-800 to-gray-900 h-dvh'>
+    <div className='bg-gradient-to-r from-zinc-800 to-zinc-950 h-dvh'>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h1 className="text-3xl font-bold mb-8">Dashboard</h1>
       
-      <div className="bg-gray-900 shadow rounded-lg p-6">
+      <div className="bg-zinc-900 shadow rounded-lg p-6">
         <div className="flex items-center space-x-4">
           {session?.user?.image && (
             <img
@@ -68,7 +58,7 @@ export default function DashboardPage() {
             <h2 className="text-xl font-semibold">
               {session?.user?.name || 'User'}
             </h2>
-            <p className="text-gray-600">{session?.user?.email}</p>
+            <p className="text-gray-400">{session?.user?.email}</p>
           </div>
         </div>
         
@@ -78,15 +68,15 @@ export default function DashboardPage() {
             <ul className="space-y-2">
               {searches.map((search) => (
                 <li key={search.id} className="p-3 bg-gray-50 rounded-lg">
-                  <p className="text-blue-600">{search.query}</p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-zinc-600">{search.query}</p>
+                  <p className="text-xs text-zinc-400">
                     {new Date(search.createdAt).toLocaleString()}
                   </p>
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="text-gray-500">You haven't made any searches yet.</p>
+            <p className="text-zinc-400">You haven't made any searches yet.</p>
           )}
         </div>
       </div>

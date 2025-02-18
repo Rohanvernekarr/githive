@@ -25,7 +25,7 @@ export default function SearchSection() {
   }
 
   return (
-    <section className="bg-gradient-to-r from-gray-800 to-gray-900 pt-20 pb-10">
+    <section className="bg-gradient-to-r from-zinc-800 to-zinc-950 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-white text-center mb-8">
           Discover Amazing GitHub Projects
@@ -42,9 +42,9 @@ export default function SearchSection() {
             <button
               title="button"
               type="submit"
-              className="bg-gray-600 px-8 py-4 rounded-r-lg hover:bg-gray-500 transition"
+              className="bg-zinc-800 px-8 py-4 rounded-r-lg hover:bg-zinc-900 transition"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-8 h-9" />
             </button>
           </div>
         </form>
