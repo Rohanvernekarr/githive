@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Search, X } from 'lucide-react' // Import X icon for the exit button
+import { FaFilter } from "react-icons/fa";
 
 export default function SearchSection() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -31,27 +32,39 @@ export default function SearchSection() {
           Discover Amazing GitHub Projects
         </h1>
         <form onSubmit={handleSearch} className="max-w-2xl mx-auto">
-          <div className="flex shadow-lg">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search for projects..."
-              className="flex-1 text-black text-lg p-6 py-4 bg-slate-50 rounded-l-lg focus:outline-none"
-            />
-            <button
-              title="button"
-              type="submit"
-              className="bg-zinc-800 px-8 py-4 rounded-r-lg hover:bg-zinc-900 transition"
-            >
-              <Search className="w-8 h-9" />
-            </button>
-          </div>
-        </form>
+  <div className="flex shadow-lg">
+    {/* Search Input */}
+    <input
+      type="text"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      placeholder="Search for projects..."
+      className="flex-1 text-black text-lg p-6 py-4 bg-slate-200 rounded-l-lg focus:outline-none"
+    />
 
+    {/* Filter Button */}
+    <section
+ 
+  className="bg-slate-200 p-2 sm:p-4 transition border-n flex items-center justify-center w-full sm:w-auto "
+>
+  <FaFilter  title="filter"
+  onClick={() => setShowFilters(true)} className="text-lg sm:text-xl cursor-pointer text-zinc-600 w-5 h-5 sm:w-6 sm:h-6" />
+</section>
+
+
+   
+    <button
+    title="search"
+      type="submit"
+      className="bg-zinc-800 px-8 py-4 rounded-r-lg hover:bg-zinc-900 transition flex items-center justify-center"
+    >
+      <Search className="w-8 h-9 text-white" />
+    </button>
+  </div>
+</form>
         {/* Filter Section */}
         {showFilters && (
-          <div className="mt-8 bg-gray-800 p-6 rounded-lg shadow-lg relative">
+          <div className="mt-8 bg-zinc-900 p-6 rounded-lg shadow-lg relative">
             {/* Exit Button */}
             <button
               title="exit"
@@ -75,7 +88,7 @@ export default function SearchSection() {
                       className={`px-4 py-2 rounded-md text-sm font-medium transition ${
                         activeFilters.includes(lang)
                           ? 'bg-blue-500 text-white'
-                          : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                          : 'bg-zinc-700 text-gray-300 hover:bg-gray-600'
                       }`}
                     >
                       {lang}
@@ -90,7 +103,7 @@ export default function SearchSection() {
                 <input
                   type="number"
                   placeholder="Min stars"
-                  className="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="mt-1 block w-full px-3 py-2 bg-zinc-700 border border-zinc-900 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
@@ -99,7 +112,7 @@ export default function SearchSection() {
                 <label className="block text-sm font-medium text-gray-300">Sort By</label>
                 <select
                   title="search"
-                  className="mt-1 block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="mt-1 block w-full px-3 py-2 bg-zinc-700 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="stars">Stars</option>
                   <option value="forks">Forks</option>
@@ -112,7 +125,7 @@ export default function SearchSection() {
             <div className="mt-6">
               <button
                 type="button"
-                className="w-full px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition"
+                className="w-full px-4 py-2 bg-zinc-700 text-white rounded-md hover:bg-zinc-800 transition"
               >
                 Apply Filters
               </button>
