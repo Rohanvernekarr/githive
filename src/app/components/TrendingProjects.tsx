@@ -62,10 +62,10 @@ export default function TrendingProjects() {
   }, []);
 
   return (
-    <section className="py-16 bg-gradient-to-r from-zinc-800 to-zinc-950">
+    <section className="py-6 bg-gradient-to-r from-zinc-800 to-zinc-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-white mb-8">
-          Trending Projects..
+          Highest Stars..
         </h2>
         
         {loading && (
@@ -108,7 +108,7 @@ export default function TrendingProjects() {
                     <p className="text-gray-400 mb-4 line-clamp-2 flex-grow">
                       {project.description}
                     </p>
-                    <div className="flex items-center justify-between mt-auto">
+                    <div className="flex justify-between mt-auto">
                       <span className="text-sm bg-zinc-700 group-hover:bg-zinc-600 px-3 py-1 
                       rounded-full transition duration-300">
                         {project.language}
@@ -133,7 +133,7 @@ export default function TrendingProjects() {
                       href={project.url}
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="mt-4  inline-flex w-full justify-center py-2 border border-zinc-700 
+                      className="mt-8  inline-flex w-full justify-center py-2 border border-zinc-700 
                       rounded-md 
                         text-sm text-white bg-zinc-800/50 hover:bg-purple-500/30 
                         transition-all duration-300
