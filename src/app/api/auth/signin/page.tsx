@@ -14,7 +14,7 @@ export default function SignIn() {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-zinc-800 to-zinc-950">
+    <div className="min-h-screen flex font-sans items-center justify-center bg-gradient-to-r from-zinc-800 to-zinc-950">
       <div className="max-w-md space-y-8 p-8 bg-zinc-900 rounded-lg shadow-md">
         <div className="text-center">
           <h2 className="mt-6 text-3xl font-extrabold text-gray-200">

@@ -95,7 +95,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className='bg-gradient-to-r from-zinc-800 to-zinc-950 min-h-dvh text-white'>
+    <div className='bg-gradient-to-r font-sans from-zinc-800 to-zinc-950 min-h-dvh text-white'>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header className="mb-10">
           <h1 className="text-4xl font-bold mb-2">Your Dashboard</h1>

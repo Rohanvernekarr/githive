@@ -11,6 +11,7 @@ interface Project {
   url: string;
   avatarUrl: string;
   openIssues: string;
+  topics: string[];
   
 
 }
@@ -41,11 +42,11 @@ export default function TrendingProjects() {
           name: repo.name,
           description: repo.description || "No description available",
           stars: repo.stargazers_count,
-          language: repo.language || "Unknown",
+          language: repo.language || "readmd",
           owner: repo.owner.login,
           openIssues: repo.open_issues_count,
           url: repo.html_url,
-          
+          avatarUrl: repo.owner.avatar_url,
           
         }));
         
@@ -62,9 +63,9 @@ export default function TrendingProjects() {
   }, []);
 
   return (
-    <section className="py-6 bg-gradient-to-r from-zinc-800 to-zinc-950">
+    <section className="py-6 bg-gradient-to-r font-montserrat from-zinc-800 to-zinc-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-white mb-8">
+        <h2 className="text-3xl font-sans font-bold text-white mb-8">
           Highest Stars..
         </h2>
         

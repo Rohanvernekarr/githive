@@ -1,0 +1,109 @@
+'use client';
+
+import { X } from 'lucide-react';
+
+interface FiltersProps {
+  activeFilters: string[];
+  setActiveFilters: React.Dispatch<React.SetStateAction<string[]>>; // Updated type
+  minStars: number | undefined;
+  setMinStars: (stars: number | undefined) => void;
+  sortBy: string;
+  setSortBy: (sortBy: string) => void;
+  applyFilters: () => void;
+  onClose: () => void;
+}
+
+export default function Filters({
+  activeFilters,
+  setActiveFilters,
+  minStars,
+  setMinStars,
+  sortBy,
+  setSortBy,
+  applyFilters,
+  onClose,
+}: FiltersProps) {
+  // Toggle filter selection
+  const toggleFilter = (filter: string) => {
+    setActiveFilters((prev: string[]) =>
+      prev.includes(filter)
+        ? prev.filter((f) => f !== filter) // Remove the filter if it's already active
+        : [...prev, filter] // Add the filter if it's not active
+    );
+  };
+
+  return (
+    <div className="mt-8 bg-zinc-900 font-sans p-6 rounded-lg shadow-lg relative z-10">
+      {/* Exit Button */}
+      <button
+        title="exit"
+        onClick={onClose}
+        className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition"
+      >
+        <X className="w-5 h-5" />
+      </button>
+
+      <h2 className="text-xl font-semibold text-white mb-4">Filters</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Language Filter */}
+        <div>
+          <label className="block text-sm font-medium text-gray-300">Language</label>
+          <div className="flex flex-wrap gap-2 mt-2">
+            {['JavaScript', 'TypeScript', 'Python', 'Java'].map((lang) => (
+              <button
+                key={lang}
+                title={lang}
+                onClick={() => toggleFilter(lang)}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition ${
+                  activeFilters.includes(lang)
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-zinc-700 text-gray-300 hover:bg-gray-600'
+                }`}
+              >
+                {lang}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Stars Filter */}
+        <div>
+          <label className="block text-sm font-medium text-gray-300">Stars</label>
+          <input
+            type="number"
+            placeholder="Min stars"
+            value={minStars || ''}
+            onChange={(e) => setMinStars(e.target.value ? parseInt(e.target.value) : undefined)}
+            className="mt-1 block w-full px-3 py-2 bg-zinc-700 border border-zinc-900 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* Sort By Filter */}
+        <div>
+          <label className="block text-sm font-medium text-gray-300">Sort By</label>
+          <select
+            title="sort"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="mt-1 block w-full px-3 py-2 bg-zinc-700 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="stars">Stars</option>
+            <option value="forks">Forks</option>
+            <option value="updated">Last Updated</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Apply Filters Button */}
+      <div className="mt-6">
+        <button
+          type="button"
+          onClick={applyFilters}
+          className="w-full px-4 py-2 bg-zinc-700 text-white rounded-md hover:bg-zinc-800 transition"
+        >
+          Apply Filters
+        </button>
+      </div>
+    </div>
+  );
+}

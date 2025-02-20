@@ -1,20 +1,20 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useSession, signIn, signOut } from 'next-auth/react'
-import Image from 'next/image'
-import { useState } from 'react'
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useSession, signIn, signOut } from "next-auth/react";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Navbar() {
-  const pathname = usePathname()
-  const { data: session, status } = useSession()
-  const loading = status === 'loading'
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const pathname = usePathname();
+  const { data: session, status } = useSession();
+  const loading = status === "loading";
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen)
-  }
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   return (
     <nav className="bg-gradient-to-r from-zinc-800 to-zinc-950 shadow-sm">
@@ -23,8 +23,8 @@ export default function Navbar() {
           {/* Logo & Links */}
           <div className="flex">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-white">
-                Git<span className="text-gray-300 font-bold">Hive</span>
+              <span className="text-3xl font-bold text-white">
+                Git<span className="text-gray-300 font-sans  font-bold">Hive</span>
               </span>
             </Link>
 
@@ -32,30 +32,36 @@ export default function Navbar() {
               <Link
                 href="/"
                 className={`${
-                  pathname === '/' ? 'text-blue-300' : 'text-white hover:text-gray-300'
-                } px-3 py-2 rounded-md text-sm font-medium`}
+                  pathname === "/"
+                    ? "text-blue-300"
+                    : "text-white hover:text-gray-300"
+                } px-3 py-2 font-sans rounded-md text-sm font-medium`}
               >
                 Home
               </Link>
-             
-              <Link
-  href="/about"
-  className={`${
-    pathname === '/about' ? 'text-blue-300' : 'text-white hover:text-gray-300'
-  } px-3 py-2 rounded-md text-sm font-medium hidden md:block`}
->
-  About
-</Link>
+
               {session && (
                 <Link
                   href="/dashboard"
                   className={`${
-                    pathname === '/dashboard' ? 'text-blue-300' : 'text-white hover:text-gray-300'
-                  } px-3 py-2 rounded-md text-sm font-medium`}
+                    pathname === "/dashboard"
+                      ? "text-blue-300"
+                      : "text-white hover:text-gray-300"
+                  } px-3 py-2 rounded-md font-sans text-sm font-medium`}
                 >
                   Dashboard
                 </Link>
               )}
+              <Link
+                href="/about"
+                className={`${
+                  pathname === "/about"
+                    ? "text-blue-300"
+                    : "text-white hover:text-gray-300"
+                } px-3 py-2 rounded-md font-sans text-sm font-medium hidden md:block`}
+              >
+                About
+              </Link>
             </div>
           </div>
 
@@ -69,7 +75,7 @@ export default function Navbar() {
                   <div className="relative">
                     <Image
                       src={session.user.image}
-                      alt={session.user.name || 'User'}
+                      alt={session.user.name || "User"}
                       width={32}
                       height={32}
                       className="rounded-full cursor-pointer"
@@ -80,7 +86,7 @@ export default function Navbar() {
                         <div className="py-1">
                           <button
                             onClick={() => signOut()}
-                            className=" w-full px-4 block py-2 text-sm text-white hover:bg-zinc-950"
+                            className=" w-full px-4 font-sans block py-2 text-sm text-white hover:bg-zinc-950"
                           >
                             Sign Out
                           </button>
@@ -89,12 +95,15 @@ export default function Navbar() {
                     )}
                   </div>
                 )}
-                <span className="text-sm text-gray-300 hidden sm:hidden md:inline cursor-pointer"  onClick={toggleDropdown}>
+                <span
+                  className="text-sm text-gray-300 hidden sm:hidden md:inline cursor-pointer"
+                  onClick={toggleDropdown}
+                >
                   {session.user?.name || session.user?.email}
                 </span>
                 <button
                   onClick={() => signOut()}
-                  className="bg-gray-600 text-white px-4 py-2 hidden rounded-md text-sm font-medium hover:bg-gray-700 transition md:hidden"
+                  className="bg-gray-600 text-white font-sans px-4 py-2 hidden rounded-md text-sm font-medium hover:bg-gray-700 transition md:hidden"
                 >
                   Sign Out
                 </button>
@@ -113,5 +122,5 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

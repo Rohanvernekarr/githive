@@ -19,10 +19,10 @@ export default function SearchResults({
   onRepoClick
 }: SearchResultsProps) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 z-50 overflow-y-auto">
+    <div className="fixed inset-0 bg-black font-sans bg-opacity-80 z-50 overflow-y-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold text-white">
+          <h2 className="text-3xl font-bold  text-white">
             Search Results for "{searchQuery}"
           </h2>
           <button
