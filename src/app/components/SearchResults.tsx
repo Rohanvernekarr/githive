@@ -69,6 +69,7 @@ function ProjectCard({ project, onRepoClick }: { project: GitHubProject; onRepoC
       ownerAvatar: project.owner.avatar_url,
       stars: project.stargazers_count,
       language: project.language,
+      topics: project.topics || [],
       visitedAt: new Date().toISOString()
     };
     localStorage.setItem('visitedRepos', JSON.stringify([...visitedRepos, newRepo]));
@@ -76,6 +77,7 @@ function ProjectCard({ project, onRepoClick }: { project: GitHubProject; onRepoC
   };
 
   return (
+    <div key={project.id} className="group">
     <div className="bg-zinc-900 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-purple-500/20 transition duration-300">
       <div className="p-6">
         <div className="flex items-start gap-3 mb-3">
@@ -98,6 +100,12 @@ function ProjectCard({ project, onRepoClick }: { project: GitHubProject; onRepoC
           {project.language && (
             <div className="text-sm px-3 py-1 bg-zinc-800 rounded-full text-gray-300">{project.language}</div>
           )}
+          {project.topics && project.topics.slice(0, 1).map(topic => (
+                      <span key={topic} className="text-sm bg-purple-900/30 group-hover:bg-purple-900/50 px-3 py-1 
+                      rounded-full transition duration-300">
+                        {topic}
+                      </span>
+                    ))}
         </div>
         <a
           href={project.html_url}
@@ -108,6 +116,7 @@ function ProjectCard({ project, onRepoClick }: { project: GitHubProject; onRepoC
         >
           View Project
         </a>
+      </div>
       </div>
     </div>
   );

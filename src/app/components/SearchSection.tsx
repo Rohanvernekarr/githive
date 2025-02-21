@@ -6,6 +6,7 @@ import { FaFilter } from 'react-icons/fa';
 import SearchResults from './SearchResults';
 import { useSession } from 'next-auth/react';
 import Filters from './Filters';
+import { CiFilter } from "react-icons/ci";
 
 // Define types for GitHub project results
 export type GitHubProject = {
@@ -228,7 +229,7 @@ export default function SearchSection() {
                 <FaFilter
                   title="filter"
                   onClick={() => setShowFilters(!showFilters)}
-                  className="text-lg sm:text-xl cursor-pointer text-zinc-500 w-5 h-5 sm:w-6 sm:h-6"
+                  className="text-lg sm:text-xl cursor-pointer text-zinc-400 w-5 h-5 sm:w-6 sm:h-6"
                 />
               </section>
 
