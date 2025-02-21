@@ -1,10 +1,11 @@
 'use client';
 
 import { X } from 'lucide-react';
+import { useState } from 'react';
 
 interface FiltersProps {
   activeFilters: string[];
-  setActiveFilters: React.Dispatch<React.SetStateAction<string[]>>; // Updated type
+  setActiveFilters: React.Dispatch<React.SetStateAction<string[]>>;
   minStars: number | undefined;
   setMinStars: (stars: number | undefined) => void;
   sortBy: string;
@@ -23,6 +24,8 @@ export default function Filters({
   applyFilters,
   onClose,
 }: FiltersProps) {
+  const [customTag, setCustomTag] = useState(''); // State for custom tag input
+
   // Toggle filter selection
   const toggleFilter = (filter: string) => {
     setActiveFilters((prev: string[]) =>
@@ -30,6 +33,21 @@ export default function Filters({
         ? prev.filter((f) => f !== filter) // Remove the filter if it's already active
         : [...prev, filter] // Add the filter if it's not active
     );
+  };
+
+  // Add custom tag to active filters
+  const addCustomTag = () => {
+    if (customTag.trim() && !activeFilters.includes(customTag.trim())) {
+      setActiveFilters((prev) => [...prev, customTag.trim()]);
+      setCustomTag(''); // Clear the input field
+    }
+  };
+
+  // Handle Enter key press in the input field
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      addCustomTag();
+    }
   };
 
   return (
@@ -49,7 +67,7 @@ export default function Filters({
         <div>
           <label className="block text-sm font-medium text-gray-300">Language</label>
           <div className="flex flex-wrap gap-2 mt-2">
-            {['JavaScript', 'TypeScript', 'Python', 'Java','Rust'].map((lang) => (
+            {['JavaScript', 'TypeScript', 'Python', 'Java', 'Rust'].map((lang) => (
               <button
                 key={lang}
                 title={lang}
@@ -63,6 +81,46 @@ export default function Filters({
                 {lang}
               </button>
             ))}
+          </div>
+        </div>
+
+        {/* Custom Tags Input */}
+        <div>
+          <label className="block text-sm font-medium text-gray-300">Custom Language</label>
+          <div className="flex gap-2 mt-2">
+            <input
+              type="text"
+              placeholder="Add a language"
+              value={customTag}
+              onChange={(e) => setCustomTag(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="flex-1 px-3 py-2 bg-zinc-700 border border-zinc-900 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              onClick={addCustomTag}
+              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+            >
+              Add
+            </button>
+          </div>
+          {/* Display custom tags */}
+          <div className="flex flex-wrap gap-2 mt-2">
+            {activeFilters
+              .filter((filter) => !['JavaScript', 'TypeScript', 'Python', 'Java', 'Rust'].includes(filter))
+              .map((filter) => (
+                <button
+                  key={filter}
+                  title={filter}
+                  onClick={() => toggleFilter(filter)}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition ${
+                    activeFilters.includes(filter)
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-zinc-700 text-gray-300 hover:bg-gray-600'
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
           </div>
         </div>
 

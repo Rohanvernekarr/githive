@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo & Links */}
-          <div className="flex">
+          <div className="flex ">
             <Link href="/" className="flex items-center">
               <span className="text-3xl font-bold text-white">
                 Git<span className="text-gray-300 font-sans  font-bold">Hive</span>
@@ -34,8 +34,8 @@ export default function Navbar() {
                 className={`${
                   pathname === "/"
                     ? "text-blue-300"
-                    : "text-white hover:text-gray-300"
-                } px-3 py-2 font-sans rounded-md text-sm font-medium`}
+                    : "text-gray-200 hover:text-gray-300"
+                } px-3 py-2 font-sans rounded-md text-base font-medium `}
               >
                 Home
               </Link>
@@ -46,8 +46,8 @@ export default function Navbar() {
                   className={`${
                     pathname === "/dashboard"
                       ? "text-blue-300"
-                      : "text-white hover:text-gray-300"
-                  } px-3 py-2 rounded-md font-sans text-sm font-medium`}
+                      : "text-gray-200 hover:text-gray-300"
+                  } px-3 py-2 rounded-md font-sans text-base font-medium`}
                 >
                   Dashboard
                 </Link>
@@ -57,8 +57,8 @@ export default function Navbar() {
                 className={`${
                   pathname === "/about"
                     ? "text-blue-300"
-                    : "text-white hover:text-gray-300"
-                } px-3 py-2 rounded-md font-sans text-sm font-medium hidden md:block`}
+                    : "text-gray-200 hover:text-gray-300"
+                } px-3 py-2 rounded-md font-sans text-base font-medium hidden md:block`}
               >
                 About
               </Link>
