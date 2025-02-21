@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Search, History } from 'lucide-react';
+import { Search, History, X } from 'lucide-react';
 import { FaFilter } from 'react-icons/fa';
 import SearchResults from './SearchResults';
 import { useSession } from 'next-auth/react';
-import Filters from './Filters'; // Import the new Filters component
+import Filters from './Filters';
 
 // Define types for GitHub project results
 export type GitHubProject = {
@@ -79,14 +79,34 @@ export default function SearchSection() {
         });
       } catch (error) {
         console.error('Failed to save search to server:', error);
-        // Continue anyway since we've saved to localStorage
       }
+    }
+  };
+
+  // Save visited repositories to localStorage
+  const saveVisitedRepoToLocalStorage = (repo: GitHubProject) => {
+    const visitedRepos = JSON.parse(localStorage.getItem('visitedRepos') || '[]');
+
+    // Check if the repo is already in the list to avoid duplicates
+    const isRepoAlreadyVisited = visitedRepos.some(
+      (visitedRepo: GitHubProject) => visitedRepo.id === repo.id
+    );
+
+    if (!isRepoAlreadyVisited) {
+      // Add the new repo to the list
+      visitedRepos.push(repo);
+
+      // Save the updated list back to localStorage
+      localStorage.setItem('visitedRepos', JSON.stringify(visitedRepos));
     }
   };
 
   // Track repo visit
   const trackRepoVisit = async (repo: GitHubProject) => {
-    // If user is logged in, save visited repo
+    // Save the repo to localStorage
+    saveVisitedRepoToLocalStorage(repo);
+
+    // If user is logged in, save visited repo to API
     if (status === 'authenticated' && session?.user) {
       try {
         await fetch('/api/visited-repos', {
@@ -178,12 +198,19 @@ export default function SearchSection() {
     setShowSearchOverlay(false);
   };
 
+  // Delete search history item
+  const deleteSearchHistoryItem = (index: number) => {
+    const updatedHistory = searchHistory.filter((_, i) => i !== index);
+    setSearchHistory(updatedHistory);
+    localStorage.setItem('githubSearchHistory', JSON.stringify(updatedHistory));
+  };
+
   return (
     <>
       <section className="bg-gradient-to-r from-zinc-800 font-sans to-zinc-950 pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold text-white font-sans text-center mb-8">
-            Discover Amazing <span className='text-gray-300'>GitHub Projects</span> 
+            Discover Amazing <span className="text-gray-300">GitHub Projects</span>
           </h1>
           <form onSubmit={handleSearch} className="max-w-2xl mx-auto">
             <div className="flex shadow-lg">
@@ -230,25 +257,47 @@ export default function SearchSection() {
             />
           )}
 
-          {/* Search History Section */}
+          {/* Search History */}
           {searchHistory.length > 0 && !showSearchOverlay && (
             <div className="mt-8">
-              <div className="flex items-center gap-2 text-gray-300 mb-3">
-                <History className="w-4 h-4" />
-                <h3 className="text-md font-medium">Recent Searches</h3>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2 text-gray-300">
+                  <History className="w-4 h-4" />
+                  <h3 className="text-md font-medium">Recent Searches</h3>
+                </div>
+                <button
+                  onClick={() => {
+                    setSearchHistory([]);
+                    localStorage.removeItem('githubSearchHistory');
+                  }}
+                  className="text-sm text-gray-400 hover:text-gray-500 transition"
+                >
+                  Clear All
+                </button>
               </div>
               <div className="flex flex-wrap gap-2">
                 {searchHistory.map((query, index) => (
-                  <button
+                  <div
                     key={index}
-                    onClick={() => {
-                      setSearchQuery(query);
-                      handleSearch({ preventDefault: () => {} } as React.FormEvent);
-                    }}
-                    className="px-3 py-1 bg-zinc-800 text-gray-300 text-sm rounded-full hover:bg-zinc-700 transition"
+                    className="flex items-center gap-2 px-3 py-1 bg-zinc-800 text-gray-300 text-sm rounded-full hover:bg-zinc-700 transition group"
                   >
-                    {query}
-                  </button>
+                    <button
+                      onClick={() => {
+                        setSearchQuery(query);
+                        handleSearch({ preventDefault: () => {} } as React.FormEvent);
+                      }}
+                      className="hover:text-white truncate"
+                    >
+                      {query}
+                    </button>
+                    <button
+                      onClick={() => deleteSearchHistoryItem(index)}
+                      className="text-gray-300 hover:text-gray-400 transition-opacity opacity-0 group-hover:opacity-100 duration-200"
+                      title="Delete"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
                 ))}
               </div>
             </div>

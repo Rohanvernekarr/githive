@@ -35,7 +35,7 @@ export default function Navbar() {
                   pathname === "/"
                     ? "text-blue-300"
                     : "text-gray-200 hover:text-gray-300"
-                } px-3 py-2 font-sans rounded-md text-base font-medium `}
+                } px-3 py-2 font-sans rounded-md text-base font-medium  `}
               >
                 Home
               </Link>
