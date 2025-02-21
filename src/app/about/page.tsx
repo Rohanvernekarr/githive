@@ -2,7 +2,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="bg-gradient-to-r from-zinc-800 to-zinc-950 w-full min-h-screen flex items-center justify-center p-6">
+    <div className="bg-gradient-to-r from-zinc-800 font-montserrat to-zinc-950 w-full min-h-screen flex items-center justify-center p-6">
       <div className="max-w-4xl w-full  backdrop-blur-sm rounded-lg  p-8 text-gray-300">
         <h1 className="text-4xl font-bold text-zinc-200 mb-6 text-center">
           Welcome to <span className="text-zinc-300">GitHive</span>

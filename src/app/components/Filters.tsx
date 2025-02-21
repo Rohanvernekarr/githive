@@ -49,7 +49,7 @@ export default function Filters({
         <div>
           <label className="block text-sm font-medium text-gray-300">Language</label>
           <div className="flex flex-wrap gap-2 mt-2">
-            {['JavaScript', 'TypeScript', 'Python', 'Java'].map((lang) => (
+            {['JavaScript', 'TypeScript', 'Python', 'Java','Rust'].map((lang) => (
               <button
                 key={lang}
                 title={lang}

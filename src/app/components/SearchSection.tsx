@@ -183,7 +183,7 @@ export default function SearchSection() {
       <section className="bg-gradient-to-r from-zinc-800 font-sans to-zinc-950 pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold text-white font-sans text-center mb-8">
-            Discover Amazing GitHub Projects
+            Discover Amazing <span className='text-gray-300'>GitHub Projects</span> 
           </h1>
           <form onSubmit={handleSearch} className="max-w-2xl mx-auto">
             <div className="flex shadow-lg">

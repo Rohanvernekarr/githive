@@ -64,12 +64,7 @@ export default function SignIn() {
           
             
             
-            {isHovered && (
-              <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 
-              rounded-md whitespace-nowrap">
-                Under Development
-              </span>
-            )}
+           
           </button>
         </div>
       </div>

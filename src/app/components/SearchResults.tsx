@@ -19,7 +19,7 @@ export default function SearchResults({
   onRepoClick
 }: SearchResultsProps) {
   return (
-    <div className="fixed inset-0 bg-black font-sans bg-opacity-80 z-50 overflow-y-auto">
+    <div className="fixed inset-0 bg-black font-sans bg-opacity-80 z-50 overflow-auto scrollbar-hide">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold  text-white">
@@ -34,21 +34,20 @@ export default function SearchResults({
           </button>
         </div>
 
-        {/* Results loading state */}
+        
         {isLoading && (
           <div className="flex justify-center items-center py-20">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
           </div>
         )}
 
-        {/* No results message */}
+    
         {!isLoading && searchResults.length === 0 && (
           <div className="text-center py-20">
             <p className="text-xl text-gray-400">No projects found matching your criteria</p>
           </div>
         )}
 
-        {/* Results display */}
         {!isLoading && searchResults.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {searchResults.map((project) => (
@@ -76,7 +75,7 @@ function ProjectCard({
 
   return (
     <div 
-      className="bg-zinc-900 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-purple-500/20 transition duration-300"
+      className="bg-zinc-900 rounded-lg overflow-hidden  hover:shadow-lg hover:shadow-purple-500/20 transition duration-300"
     >
       <div className="p-6">
         <div className="flex items-start gap-3 mb-3">

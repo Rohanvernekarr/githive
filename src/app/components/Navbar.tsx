@@ -17,7 +17,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-zinc-800 to-zinc-950 shadow-sm">
+    <nav className="bg-gradient-to-r p-2.5 from-zinc-800 to-zinc-950 shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo & Links */}
@@ -101,6 +101,7 @@ export default function Navbar() {
                 >
                   {session.user?.name || session.user?.email}
                 </span>
+               
                 <button
                   onClick={() => signOut()}
                   className="bg-gray-600 text-white font-sans px-4 py-2 hidden rounded-md text-sm font-medium hover:bg-gray-700 transition md:hidden"
