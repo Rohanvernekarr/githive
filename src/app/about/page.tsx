@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const Page = () => {
   return (
     <div className="bg-gradient-to-r from-zinc-800 font-montserrat to-zinc-950 w-full min-h-screen flex items-center justify-center p-6">
@@ -55,13 +56,13 @@ const Page = () => {
             <h2 className="text-2xl font-semibold text-zinc-200 mb-4">
               Contact Us
             </h2>
-            <p className="text-lg">
-              📩 Email us at{" "}
+            <p className="text-lg flex-row">
+              📩 Reach out at{" "}
               <a
-                href="mailto:support@githive.com"
+                href="https://x.com/Rohanvrnkr?s=09"
                 className="text-white hover:underline"
               >
-                support@githive.com
+                  @Rohanvrnkr
               </a>
             </p>
           </section>

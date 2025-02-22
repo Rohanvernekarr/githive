@@ -87,7 +87,7 @@ export default function Filters({
         {/* Custom Tags Input */}
         <div>
           <label className="block text-sm font-medium text-gray-300">Custom Language</label>
-          <div className="flex gap-2 mt-2">
+          <div className="flex  gap-1 mt-1">
             <input
               type="text"
               placeholder="Add a language"
@@ -98,7 +98,7 @@ export default function Filters({
             />
             <button
               onClick={addCustomTag}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+              className="px-3 py-2 bg-zinc-500 text-white rounded-md hover:bg-zinc-600 transition"
             >
               Add
             </button>
