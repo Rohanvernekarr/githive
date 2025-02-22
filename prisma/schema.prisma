@@ -1,10 +1,9 @@
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "postgresql" // or "mysql" or "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -14,12 +13,12 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -43,8 +42,6 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  searches      Search[]
-  favorites     Favorite[]
 }
 
 model VerificationToken {
@@ -53,26 +50,4 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-}
-
-model Search {
-  id        String   @id @default(cuid())
-  query     String
-  userId    String
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model Favorite {
-  id          String   @id @default(cuid())
-  userId      String
-  repoName    String
-  repoOwner   String
-  description String?
-  stars       Int      @default(0)
-  language    String?
-  createdAt   DateTime @default(now())
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([userId, repoOwner, repoName])
 }
