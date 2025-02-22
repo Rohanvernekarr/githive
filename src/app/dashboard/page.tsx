@@ -270,11 +270,7 @@ export default function DashboardPage() {
                           className="block"
                         >
                           <div className="flex items-start gap-4">
-                            <img
-                              src={repo.avatarUrl}
-                              alt={repo.owner}
-                              className="w-10 h-10 rounded-full"
-                            />
+                            
                             <div className="flex-1 min-w-0">
                               <h4 className="font-medium text-lg text-white truncate">
                                 {repo.name}

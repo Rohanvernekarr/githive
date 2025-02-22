@@ -3,6 +3,7 @@
 import { X } from 'lucide-react';
 import { GitHubProject } from './SearchSection';
 import { useEffect, useState } from 'react';
+import Image from "next/image";
 
 interface SearchResultsProps {
   searchQuery: string;
@@ -81,7 +82,8 @@ function ProjectCard({ project, onRepoClick }: { project: GitHubProject; onRepoC
     <div className="bg-zinc-900 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-purple-500/20 transition duration-300">
       <div className="p-6">
         <div className="flex items-start gap-3 mb-3">
-          <img src={project.owner.avatar_url} alt={project.owner.login} className="w-8 h-8 rounded-full" />
+          <Image src={project.owner.avatar_url}  width="100" 
+                  height="100"  alt={project.owner.login} className="w-8 h-8 rounded-full" />
           <div className="flex-1 min-w-0">
             <h3 className="text-xl font-semibold text-white group-hover:text-purple-300 transition duration-300 truncate">
               {project.name}
