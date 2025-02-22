@@ -27,7 +27,7 @@ export default function Navbar() {
           <div className="flex ">
             <Link href="/" className="flex items-center">
             <div >
-      <Image src={IMAGE} alt="GitHive Logo" width="200" className="h-16 w-40 glow-effect  drop-shadow-lg" />
+      <Image src={IMAGE} alt="GitHive Logo" width={150} height={150} className="glow-effect  drop-shadow-lg" />
     </div>
             </Link>
 
