@@ -22,9 +22,15 @@ const handler = NextAuth({
   callbacks: {
     async session({ session, token }) {
       if (session.user && token.sub) {
-        session.user.id = token.sub;
+        session.user.id = token.sub; // Add user ID to the session
       }
       return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.sub = user.id; // Add user ID to the JWT token
+      }
+      return token;
     },
   },
   pages: {
@@ -32,6 +38,8 @@ const handler = NextAuth({
     signOut: "/auth/signout",
     error: "/auth/error",
   },
+  secret: process.env.NEXTAUTH_SECRET, // Required for production
+  debug: process.env.NODE_ENV === "development", // Enable debug logs in development
 });
 
 export { handler as GET, handler as POST };
