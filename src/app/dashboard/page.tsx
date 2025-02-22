@@ -230,7 +230,7 @@ export default function DashboardPage() {
                   <div className="text-center py-10 bg-zinc-800/50 rounded-lg">
                     <Search className="w-10 h-10 text-zinc-600 mx-auto mb-3" />
                     <p className="text-zinc-400">
-                      You haven't made any searches yet.
+                      You have not made any searches yet.
                     </p>
                     <Link
                       href="/"
@@ -247,7 +247,7 @@ export default function DashboardPage() {
               <div>
                 <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                   <ExternalLink className="w-5 h-5" />
-                  Repositories You've Visited
+                  Repositories You have Visited
                 </h3>
                 {visitedRepos.length > 0 ? (
                   <div className="space-y-4">
@@ -316,7 +316,7 @@ export default function DashboardPage() {
                   <div className="text-center py-10 bg-zinc-800/50 rounded-lg">
                     <ExternalLink className="w-10 h-10 text-zinc-600 mx-auto mb-3" />
                     <p className="text-zinc-400">
-                      You haven't visited any repositories yet.
+                      You have not visited any repositories yet.
                     </p>
                     <Link
                       href="/"

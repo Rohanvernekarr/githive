@@ -2,7 +2,7 @@
 
 import { X } from 'lucide-react';
 import { GitHubProject } from './SearchSection';
-import { useEffect, useState } from 'react';
+
 import Image from "next/image";
 
 interface SearchResultsProps {
@@ -24,7 +24,8 @@ export default function SearchResults({
     <div className="fixed inset-0 bg-black font-sans bg-opacity-80 z-50 overflow-auto scrollbar-hide">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold text-white">Search Results for "{searchQuery}"</h2>
+        <h2 className="text-3xl font-bold text-white">Search Results for &quot;{searchQuery}&quot;</h2>
+
           <button
             title="close"
             onClick={onClose}
@@ -73,7 +74,7 @@ function ProjectCard({ project, onRepoClick }: { project: GitHubProject; onRepoC
       topics: project.topics || [],
       visitedAt: new Date().toISOString()
     };
-    localStorage.setItem('visitedRepos', JSON.stringify([...visitedRepos, newRepo]));
+    localStorage.setItem("visitedRepos" , JSON.stringify([...visitedRepos, newRepo]));
     onRepoClick(project);
   };
 

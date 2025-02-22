@@ -1,5 +1,5 @@
 import { prisma } from '../prisma'
-import { User } from 'next-auth'
+
 
 export async function getUserById(id: string) {
   return prisma.user.findUnique({

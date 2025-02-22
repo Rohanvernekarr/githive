@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const Page = () => {
   return (
     <div className="bg-gradient-to-r from-zinc-800 font-montserrat to-zinc-950 w-full min-h-screen flex items-center justify-center p-6">
@@ -10,7 +9,7 @@ const Page = () => {
         </h1>
 
         <p className="text-lg mb-8 text-center">
-          Your go-to platform for discovering the best GitHub repositories. Whether you're a developer, student, or open-source enthusiast, GitHive helps you find repositories that match your interests.
+          Your go-to platform for discovering the best GitHub repositories. Whether you&apos;re a developer, student, or open-source enthusiast, GitHive helps you find repositories that match your interests.
         </p>
 
         <div className="space-y-6">
@@ -22,7 +21,7 @@ const Page = () => {
             <ul className="list-disc ml-4 list-inside space-y-2">
               
               <li>
-                <span className="font-medium">Smart Search & Filtering:</span> Quickly find projects by language, stars, contributors, and more.
+                <span className="font-medium">Smart Search &amp; Filtering:</span> Quickly find projects by language, stars, contributors, and more.
               </li>
               <li>
                 <span className="font-medium">Community-Driven:</span> Engage with like-minded developers and explore trending repositories.
@@ -48,7 +47,6 @@ const Page = () => {
             <p className="text-lg ml-4 mb-4">
               Start exploring and discovering repositories that matter to you. Sign in with GitHub or Google to personalize your experience!
             </p>
-            
           </section>
 
           
@@ -62,7 +60,7 @@ const Page = () => {
                 href="https://x.com/Rohanvrnkr?s=09"
                 className="text-white hover:underline"
               >
-                  @Rohanvrnkr
+                @Rohanvrnkr
               </a>
             </p>
           </section>

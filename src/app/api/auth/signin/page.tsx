@@ -1,17 +1,13 @@
-'use client'
+'use client';
 
-import { signIn } from 'next-auth/react'
-import { useSearchParams } from 'next/navigation'
-import { FaGoogle } from "react-icons/fa"
-import { useState } from 'react' 
+import { signIn } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
+import { FaGoogle } from 'react-icons/fa';
 
 export default function SignIn() {
-  const searchParams = useSearchParams()
-  const callbackUrl = searchParams.get('callbackUrl') || '/'
-  const error = searchParams.get('error')
-
-  
-  const [isHovered, setIsHovered] = useState(false)
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
+  const error = searchParams.get('error');
 
   return (
     <div className="min-h-screen flex font-sans items-center justify-center bg-gradient-to-r from-zinc-800 to-zinc-950">
@@ -52,8 +48,6 @@ export default function SignIn() {
           </button>
 
           <button
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
             className="group w-full flex justify-center py-3 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium
              text-gray-700 bg-gray-200 hover:bg-gray-50 transition relative cursor-not-allowed"
           >
@@ -61,13 +55,9 @@ export default function SignIn() {
               <FaGoogle className="text-xl" />
               Sign in with Google
             </span>
-          
-            
-            
-           
           </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
