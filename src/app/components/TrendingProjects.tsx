@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-
+import Image from "next/image";
 interface Project {
   id: number;
   name: string;
@@ -25,7 +25,7 @@ export default function TrendingProjects() {
     const fetchTrendingProjects = async () => {
       try {
         setLoading(true);
-        // GitHub API endpoint for trending repositories
+       
         const response = await fetch(
           'https://api.github.com/search/repositories?q=stars:>10000&sort=stars&order=desc&per_page=9'
         );
@@ -52,7 +52,7 @@ export default function TrendingProjects() {
         }));
         
         setProjects(formattedProjects);
-      } catch (err) {
+      } catch (error) {
         
         setError('Failed to load trending projects. Please try again later.');
       } finally {
@@ -100,8 +100,10 @@ export default function TrendingProjects() {
                 group-hover:shadow-xl group-hover:shadow-purple-500/20 group-hover:bg-zinc-900">
                 <div className="p-6 flex flex-col transition-all duration-300 h-full">
                   <div className="flex items-center mb-3">
-                    <img 
+                    <Image 
                       src={project.avatarUrl} 
+                      width="100" 
+                      height="100" 
                       alt={`${project.owner}'s avatar`}
                       className="w-10 h-10 rounded-full mr-3 border-2 border-zinc-700"
                     />

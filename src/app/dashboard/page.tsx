@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Search, ExternalLink, Clock, Star, GitFork, X } from "lucide-react";
 import Link from "next/link";
 import { GitHubProject } from "../components/SearchSection";
+import Image from "next/image";
 
 interface SearchHistory {
   id: string;
@@ -126,15 +127,17 @@ export default function DashboardPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header className="mb-10">
           <h1 className="text-4xl font-bold mb-2">Your Dashboard</h1>
-          <p className="text-gray-400">Track your GitHub project discoveries</p>
+          <p className="text-gray-400">Track your GitHub project discoveries </p>
         </header>
 
         <div className="bg-zinc-900 shadow-lg rounded-lg overflow-hidden">
           <div className="p-6 border-b border-zinc-800">
             <div className="flex items-center space-x-4">
               {session?.user?.image ? (
-                <img
+                <Image
                   src={session.user.image}
+                  width="100" 
+                  height="100" 
                   alt={session.user.name || "User"}
                   className="h-14 w-14 rounded-full border-2 border-blue-500"
                 />

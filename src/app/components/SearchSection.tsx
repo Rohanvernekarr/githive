@@ -6,9 +6,9 @@ import { FaFilter } from 'react-icons/fa';
 import SearchResults from './SearchResults';
 import { useSession } from 'next-auth/react';
 import Filters from './Filters';
-import { CiFilter } from "react-icons/ci";
 
-// Define types for GitHub project results
+
+
 export type GitHubProject = {
   id: number;
   name: string;
@@ -94,17 +94,17 @@ export default function SearchSection() {
     );
 
     if (!isRepoAlreadyVisited) {
-      // Add the new repo to the list
+      
       visitedRepos.push(repo);
 
-      // Save the updated list back to localStorage
+      
       localStorage.setItem('visitedRepos', JSON.stringify(visitedRepos));
     }
   };
 
   // Track repo visit
   const trackRepoVisit = async (repo: GitHubProject) => {
-    // Save the repo to localStorage
+    
     saveVisitedRepoToLocalStorage(repo);
 
     // If user is logged in, save visited repo to API
