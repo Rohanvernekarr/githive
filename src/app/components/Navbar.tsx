@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
+import IMAGE from '../assets/Githivelogo.png'
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -13,7 +14,9 @@ export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
+
     setIsDropdownOpen(!isDropdownOpen);
+    
   };
 
   return (
@@ -23,9 +26,9 @@ export default function Navbar() {
           {/* Logo & Links */}
           <div className="flex ">
             <Link href="/" className="flex items-center">
-              <span className="text-3xl font-bold text-white">
-                Git<span className="text-gray-300 font-sans  font-bold">Hive</span>
-              </span>
+            <div >
+      <Image src={IMAGE} alt="GitHive Logo" width="200" className="h-16 w-40 glow-effect  drop-shadow-lg" />
+    </div>
             </Link>
 
             <div className="ml-10 flex items-center space-x-4">
@@ -35,7 +38,7 @@ export default function Navbar() {
                   pathname === "/"
                     ? "text-blue-300"
                     : "text-gray-200 hover:text-gray-300"
-                } px-3 py-2 font-sans rounded-md text-base font-medium  `}
+                } px-3 py-2 font-sans  rounded-md text-base font-medium`}
               >
                 Home
               </Link>

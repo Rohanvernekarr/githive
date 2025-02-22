@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'GitHive - GitHub Project Discovery',
   description: 'Discover amazing GitHub projects',
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default function RootLayout({

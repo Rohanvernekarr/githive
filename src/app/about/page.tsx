@@ -9,7 +9,7 @@ const Page = () => {
         </h1>
 
         <p className="text-lg mb-8 text-center">
-          Your go-to platform for discovering the best GitHub repositories based on AI-driven recommendations. Whether you're a developer, student, or open-source enthusiast, GitHive helps you find repositories that match your interests.
+          Your go-to platform for discovering the best GitHub repositories. Whether you're a developer, student, or open-source enthusiast, GitHive helps you find repositories that match your interests.
         </p>
 
         <div className="space-y-6">
@@ -19,9 +19,7 @@ const Page = () => {
               Why GitHive? 🚀
             </h2>
             <ul className="list-disc ml-4 list-inside space-y-2">
-              <li>
-                <span className="font-medium">AI-Powered Recommendations:</span> We analyze repositories based on popularity, relevance, and your preferences.
-              </li>
+              
               <li>
                 <span className="font-medium">Smart Search & Filtering:</span> Quickly find projects by language, stars, contributors, and more.
               </li>
