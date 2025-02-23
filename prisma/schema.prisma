@@ -43,12 +43,20 @@ model User {
   accounts      Account[]
   sessions      Session[]
    favorites     Favorite[]
+   searches      Search[]  
 }
 model Favorite {
   id        String  @id @default(cuid())
   userId    String
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   repoName  String
+  createdAt DateTime @default(now())
+}
+model Search {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  query     String
   createdAt DateTime @default(now())
 }
 
