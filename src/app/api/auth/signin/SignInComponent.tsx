@@ -51,8 +51,9 @@ export default function SignInComponent() {
           </button>
 
           <button
+           
             className="group w-full flex justify-center py-3 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium
-             text-gray-700 bg-gray-200 hover:bg-gray-50 transition relative cursor-not-allowed"
+             text-gray-700 bg-gray-200 hover:bg-gray-50 transition relative cursor-not-allowed "
           >
             <span className="flex gap-1.5 items-center">
               <FaGoogle className="text-xl" />
