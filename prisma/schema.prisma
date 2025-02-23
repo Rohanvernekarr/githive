@@ -42,6 +42,14 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+   favorites     Favorite[]
+}
+model Favorite {
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  repoName  String
+  createdAt DateTime @default(now())
 }
 
 model VerificationToken {
